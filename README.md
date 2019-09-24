@@ -2,7 +2,7 @@
 
 Backend API server for [ase-attendance-system](https://github.com/joshenlim/ase-attendance-system).
 
-### Project setup
+## Project setup
 
 Install required modules: `npm install`
 
