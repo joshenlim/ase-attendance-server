@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `ase_attendance_system_db`.`groups` (
 CREATE TABLE IF NOT EXISTS `ase_attendance_system_db`.`student_group` (
 	`matric` VARCHAR(255) NOT NULL,
   `group_name` VARCHAR(255) NOT NULL,
+  `seat` INT NOT NULL,
   PRIMARY KEY (`matric`, `group_name`),
   FOREIGN KEY (`matric`) REFERENCES `ase_attendance_system_db`.`students`(`matric`),
   FOREIGN KEY (`group_name`) REFERENCES `ase_attendance_system_db`.`groups`(`group_name`)
@@ -118,8 +119,8 @@ INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue,
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TSP4', 'CZ3001', 'SPL', 'Monday', '08:30:00', '10:30:00');
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TSR1', 'CZ3001', 'SWLAB3', 'Thursday', '12:30:00', '14:30:00');
 
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name) VALUES ('U1722911C', 'TS1');
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name) VALUES ('U1720999H', 'TS1');
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name) VALUES ('U1722094J', 'TS1');
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name) VALUES ('U1721312J', 'TS1');
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name) VALUES ('U1721959H', 'TS1');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1722911C', 'TS1', 62);
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1720999H', 'TS1', 63);
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1722094J', 'TS1', 64);
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1721312J', 'TS1', 65);
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1721959H', 'TS1', 66);
