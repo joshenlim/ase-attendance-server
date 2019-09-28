@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get('/', function (req, res) {
   const courseCode = req.query.search.toUpperCase()
-  pool.query(`SELECT code, name, group_name FROM courses LEFT JOIN groups ON groups.course_code = courses.code WHERE code LIKE '%${courseCode}%'`, function (err, result, fields) {
+  pool.query(`SELECT code, name, group_name, num_labs FROM courses LEFT JOIN groups ON groups.course_code = courses.code WHERE code LIKE '%${courseCode}%'`, function (err, result, fields) {
     if (err) throw new Error(err)
 
     let formattedCourseData = []
@@ -15,7 +15,8 @@ router.get('/', function (req, res) {
         formattedCourseData.push({
           code: course_data.code,
           name: course_data.name,
-          groups: course_data.group_name ? [course_data.group_name] : []
+          groups: course_data.group_name ? [course_data.group_name] : [],
+          sessions: Array(course_data.num_labs).fill().map((x,i) => "Lab " + (i + 1)),
         })
       }
     })

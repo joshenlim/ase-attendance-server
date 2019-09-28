@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS `ase_attendance_system_db`.`students` (
 CREATE TABLE IF NOT EXISTS `ase_attendance_system_db`.`courses` (
 	`id` INT AUTO_INCREMENT PRIMARY KEY,
 	`code` VARCHAR(255) NOT NULL UNIQUE,
-	`name` VARCHAR(255) NOT NULL
+	`name` VARCHAR(255) NOT NULL,
+  `num_labs` INT NOT NULL
 ) ENGINE = InnoDB;
 
 
@@ -45,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `ase_attendance_system_db`.`student_group` (
 	`matric` VARCHAR(255) NOT NULL,
   `group_name` VARCHAR(255) NOT NULL,
   `seat` INT NOT NULL,
+  `attendance` JSON NOT NULL,
   PRIMARY KEY (`matric`, `group_name`),
   FOREIGN KEY (`matric`) REFERENCES `ase_attendance_system_db`.`students`(`matric`),
   FOREIGN KEY (`group_name`) REFERENCES `ase_attendance_system_db`.`groups`(`group_name`)
@@ -54,61 +56,66 @@ CREATE TABLE IF NOT EXISTS `ase_attendance_system_db`.`student_group` (
 -- Populate mock datahere
 -- -----------------------------------------------------
 
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ1003', 'Introduction to Computational Thinking');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ1004', 'Introduction to Computing Systems');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ1005', 'Digital Logic');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ1006', 'Computer Organization and Architecture');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ1007', 'Data Structures');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ1011', 'Engineering Mathematics I');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ1012', 'Engineering Mathematics II');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ2001', 'Algorithms');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ2002', 'Object Oriented Design and Programming');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ2003', 'Compcoursesuter Graphics and Visualization');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ2004', 'Human Computer Interaction');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ2005', 'Operating Systems');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ2006', 'Software Engineering');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ2007', 'Introduction to Databases');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ3001', 'Advanced Computer Architecture');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ3002', 'Advanced Software Engineering');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ3003', 'Software Systems Analysis and Design');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ3004', 'Multidisciplinary Design Project');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ3005', 'Artificial Intelligence');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ3006', 'Net Centric Computing');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ3007', 'Compiler Techniques');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4001', 'Virtual and Augmented Reality');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4002', 'Visual Media Compression and Processing');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4003', 'Computer Vision');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4004', '3D Modelling and Animation');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4005', 'Audio and Speech Processing');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4011', 'Parallel Computing');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4013', 'Distributed Systems');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4015', 'Simulation and Modelling');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4016', 'Advanced Topics in Algorithms');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4021', 'Pervasive Networks');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4022', 'Personal Mobile Networks');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4023', 'Advanced Computer Networks');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4024', 'Cryptography and Network Security');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4031', 'Database Systems Principles');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4032', 'Data Analytics and Mining');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4033', 'Advanced Data Management');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4034', 'Information Retrieval');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4041', 'Machine Learning');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4042', 'Neural Networks');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4045', 'Natural Language Processing');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4046', 'Intelligent Agents');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4055', 'Cyber Physical System Security');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4062', 'Computer Security');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4064', 'Security Management');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4065', 'Digital Forensics');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4068', 'Application Security');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4071', 'Network Science');
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name) VALUES ('CZ4072', 'Big Data Management');
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ1003', 'Introduction to Computational Thinking', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ1004', 'Introduction to Computing Systems', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ1005', 'Digital Logic', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ1006', 'Computer Organization and Architecture', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ1007', 'Data Structures', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ1011', 'Engineering Mathematics I', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ1012', 'Engineering Mathematics II', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2001', 'Algorithms', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2002', 'Object Oriented Design and Programming', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2003', 'Compcoursesuter Graphics and Visualization', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2004', 'Human Computer Interaction', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2005', 'Operating Systems', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2006', 'Software Engineering', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2007', 'Introduction to Databases', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ3001', 'Advanced Computer Architecture', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ3002', 'Advanced Software Engineering', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ3003', 'Software Systems Analysis and Design', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ3004', 'Multidisciplinary Design Project', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ3005', 'Artificial Intelligence', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ3006', 'Net Centric Computing', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ3007', 'Compiler Techniques', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4001', 'Virtual and Augmented Reality', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4002', 'Visual Media Compression and Processing', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4003', 'Computer Vision', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4004', '3D Modelling and Animation', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4005', 'Audio and Speech Processing', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4011', 'Parallel Computing', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4013', 'Distributed Systems', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4015', 'Simulation and Modelling', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4016', 'Advanced Topics in Algorithms', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4021', 'Pervasive Networks', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4022', 'Personal Mobile Networks', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4023', 'Advanced Computer Networks', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4024', 'Cryptography and Network Security', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4031', 'Database Systems Principles', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4032', 'Data Analytics and Mining', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4033', 'Advanced Data Management', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4034', 'Information Retrieval', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4041', 'Machine Learning', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4042', 'Neural Networks', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4045', 'Natural Language Processing', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4046', 'Intelligent Agents', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4055', 'Cyber Physical System Security', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4062', 'Computer Security', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4064', 'Security Management', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4065', 'Digital Forensics', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4068', 'Application Security', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4071', 'Network Science', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4072', 'Big Data Management', 5);
 
 INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1722911C', 'Joshen Lim');
 INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1720999H', 'Muhammed Salleh');
 INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1722094J', 'Ng Jing Rui');
 INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1721312J', 'John Vega');
 INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1721959H', 'Aloysius Tsang');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723456A', 'Andrew Tan');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723457A', 'Peter Chong');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723458A', 'Jennifer Ng');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723459A', 'Gabrielle Yeo');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723460A', 'Valerie Chen');
 
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TS1', 'CZ3002', 'SWLAB3', 'Tuesday', '13:30:00', '15:30:00');
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TS2', 'CZ3002', 'HWLAB3', 'Monday', '11:30:00', '13:30:00');
@@ -119,8 +126,13 @@ INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue,
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TSP4', 'CZ3001', 'SPL', 'Monday', '08:30:00', '10:30:00');
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TSR1', 'CZ3001', 'SWLAB3', 'Thursday', '12:30:00', '14:30:00');
 
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1722911C', 'TS1', 62);
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1720999H', 'TS1', 63);
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1722094J', 'TS1', 64);
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1721312J', 'TS1', 65);
-INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat) VALUES ('U1721959H', 'TS1', 66);
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1722911C', 'TS1', 62, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1720999H', 'TS1', 63, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1722094J', 'TS1', 64, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1721312J', 'TS1', 65, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1721959H', 'TS1', 66, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723456A', 'TS1', 67, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723457A', 'TS1', 68, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723458A', 'TS1', 69, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723459A', 'TS1', 70, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723460A', 'TS1', 71, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
