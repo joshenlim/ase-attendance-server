@@ -12,4 +12,28 @@ router.get('/', function (req, res) {
   })
 })
 
+router.post('/updateAttendance', function(req, res) {
+  const matric = req.body.matric
+  const group = req.body.group
+  const session = req.body.session
+  const status = req.body.status
+
+  pool.query(`SELECT attendance FROM student_group WHERE matric = '${matric}' AND group_name = '${group}'`, function(err, result) {
+    const studentAttendance = JSON.parse(result[0].attendance);
+
+    if (studentAttendance[`session_${session}`] == status) {
+      res.json({
+        "message": "statusNoChange"
+      })
+    } else {
+      studentAttendance[`session_${session}`]  = status;
+      pool.query(`UPDATE student_group SET attendance = '${JSON.stringify(studentAttendance)}' WHERE matric = '${matric}' AND group_name = '${group}'`, function(err, result) {
+        res.json({
+          "message": "success"
+        })
+      })
+    }
+  })
+})
+
 module.exports = router
