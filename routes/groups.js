@@ -7,7 +7,7 @@ router.get('/', function (req, res) {
   pool.query(`SELECT course_code, name, group_name, venue, day, start_time, end_time FROM groups LEFT JOIN courses ON groups.course_code = courses.code where group_name = '${groupName}';`, function (err, result, fields) {
     if (err) throw new Error(err)
     const data = result[0]
-    pool.query(`SELECT students.matric, students.name, seat, attendance FROM student_group LEFT JOIN students on student_group.matric = students.matric where group_name = '${groupName}';`, function (err, result, fields) {
+    pool.query(`SELECT students.matric, students.name, email, seat, attendance FROM student_group LEFT JOIN students on student_group.matric = students.matric where group_name = '${groupName}';`, function (err, result, fields) {
       if (err) throw new Error(err)
       result.sort((a, b) => {
         if (a.seat > b.seat) { return 1 }

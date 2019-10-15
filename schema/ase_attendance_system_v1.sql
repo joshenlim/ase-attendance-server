@@ -10,7 +10,8 @@ USE `ase_attendance_system_db` ;
 CREATE TABLE IF NOT EXISTS `ase_attendance_system_db`.`students` (
 	`id`INT AUTO_INCREMENT PRIMARY KEY,
 	`matric` VARCHAR(255) NOT NULL UNIQUE,
-	`name` VARCHAR(255) NOT NULL
+	`name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL
 ) ENGINE = InnoDB;
 
 
@@ -106,16 +107,16 @@ INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES (
 INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4071', 'Network Science', 5);
 INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ4072', 'Big Data Management', 5);
 
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1722911C', 'Joshen Lim');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1720999H', 'Muhammed Salleh');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1722094J', 'Ng Jing Rui');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1721312J', 'John Vega');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1721959H', 'Aloysius Tsang');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723456A', 'Andrew Tan');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723457A', 'Peter Chong');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723458A', 'Jennifer Ng');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723459A', 'Gabrielle Yeo');
-INSERT INTO `ase_attendance_system_db`.`students` (matric, name) VALUES ('U1723460A', 'Valerie Chen');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1722911C', 'Joshen Lim', 'JLIM256@e.ntu.edu.sg');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1720999H', 'Muhammed Salleh', 'C170090@e.ntu.edu.sg');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1722094J', 'Ng Jing Rui', 'JNG154@e.ntu.edu.sg');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1721312J', 'John Vega', 'JOHN010@e.ntu.edu.sg');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1721959H', 'Aloysius Tsang', 'ALOY0027@e.ntu.edu.sg');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723456A', 'Andrew Tan', 'ANDREW@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723457A', 'Peter Chong', 'PETER@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723458A', 'Jennifer Ng', 'JENNIFER@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723459A', 'Gabrielle Yeo', 'GABRIELLE@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723460A', 'Valerie Chen', 'VALARIE@mailinator.com');
 
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TS1', 'CZ3002', 'SWLAB3', 'Tuesday', '13:30:00', '15:30:00');
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TS2', 'CZ3002', 'HWLAB3', 'Monday', '11:30:00', '13:30:00');
