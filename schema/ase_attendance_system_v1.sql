@@ -117,6 +117,13 @@ INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES (
 INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723458A', 'Jennifer Ng', 'JENNIFER@mailinator.com');
 INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723459A', 'Gabrielle Yeo', 'GABRIELLE@mailinator.com');
 INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723460A', 'Valerie Chen', 'VALARIE@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723461A', 'Jimmy Teo', 'JIMMIE@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723462A', 'Charlie Cheong', 'CHARLIE@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723463A', 'Loganathan Thiru', 'LOGANATHAN@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723464A', 'Maximillian Lau', 'MAXIMILLIAN@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723465A', 'Adam Grant', 'ADAM@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723466A', 'Lin Chong Wei', 'CHONGWEI@mailinator.com');
+INSERT INTO `ase_attendance_system_db`.`students` (matric, name, email) VALUES ('U1723467A', 'Liu Jia Ying', 'JIAYING@mailinator.com');
 
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TS1', 'CZ3002', 'SWLAB3', 'Tuesday', '13:30:00', '15:30:00');
 INSERT INTO `ase_attendance_system_db`.`groups` (group_name, course_code, venue, day, start_time, end_time) VALUES ('TS2', 'CZ3002', 'HWLAB3', 'Monday', '11:30:00', '13:30:00');
@@ -137,3 +144,10 @@ INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat
 INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723458A', 'TS1', 69, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
 INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723459A', 'TS1', 70, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
 INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723460A', 'TS1', 71, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723461A', 'TS1', 72, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723462A', 'TS1', 73, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723463A', 'TS1', 74, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723464A', 'TS1', 75, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723465A', 'TS1', 76, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723466A', 'TS1', 77, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
+INSERT INTO `ase_attendance_system_db`.`student_group` (matric, group_name, seat, attendance) VALUES ('U1723467A', 'TS1', 78, '{"session_1": 0, "session_2": 0, "session_3": 0, "session_4": 0, "session_5": 0}');
