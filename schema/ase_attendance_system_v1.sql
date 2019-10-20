@@ -66,7 +66,7 @@ INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES (
 INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ1012', 'Engineering Mathematics II', 5);
 INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2001', 'Algorithms', 5);
 INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2002', 'Object Oriented Design and Programming', 5);
-INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2003', 'Compcoursesuter Graphics and Visualization', 5);
+INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2003', 'Computer Graphics and Visualization', 5);
 INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2004', 'Human Computer Interaction', 5);
 INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2005', 'Operating Systems', 5);
 INSERT INTO `ase_attendance_system_db`.`courses` (code, name, num_labs) VALUES ('CZ2006', 'Software Engineering', 5);

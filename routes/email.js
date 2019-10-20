@@ -27,12 +27,12 @@ router.post('/emailAlert', function(req, res) {
   };
 
   transporter.sendMail(mailOptions, function (err, info) {
-    if(err)
-      console.log(err)
-    else
-      res.json({
-        "message": "success"
-      })
+    // if(err)
+    //   console.log(err)
+    // else
+    res.json({
+      "message": "success"
+    })
   });
 })
 
